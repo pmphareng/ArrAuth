@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Array Auth</title>
+
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
+	
+</head>
+<body class="container">
+	<div id="alert" class="alert alert-dismissible fade show" role="alert"></div>
+	<div class="form-container">
+		<h3>Sign Up</h3>
+
+		<form>
+			<div class="form-group">
+				<input type="text" class="form-control" id="name" placeholder="First name">
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" id="surname" placeholder="Last name">
+			</div>
+			<div class="form-group">
+				<input type="number" class="form-control" id="age" placeholder="Age">
+			</div>
+			<div class="form-group">
+				<input type="email" class="form-control" id="email" placeholder="Email">
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" id="password" placeholder="Password">
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" id="password2" placeholder="Confirm password">
+			</div>
+			<div class="form-group">
+				<input onclick="AuthSubmit()" type="button" class="form-control btn btn-success" id="submitBtn" value="Submit">
+			</div>
+		</form>
+	</div>
+	<script>
+		function AuthSubmit(){
+			var password1 = document.getElementById("password").value;
+			var password2 = document.getElementById("password2").value;
+			var userDetails = []
+
+			if(password1 && password2){
+				if(password1===password2){
+					userDetails.push(document.getElementById("name").value);
+					userDetails.push(document.getElementById("surname").value);
+					userDetails.push(document.getElementById("age").value);
+					userDetails.push(document.getElementById("email").value);
+					userDetails.push(document.getElementById("password").value);
+					userDetails.push(document.getElementById("password2").value);
+
+					document.getElementById("alert").classList.remove("alert-danger");
+					document.getElementById("alert").classList.add("alert-success");
+					document.getElementById("alert").innerHTML = "You've successfully signed up.";
+
+				}else{
+					document.getElementById("alert").classList.remove("alert-success");
+					document.getElementById("alert").classList.add("alert-danger");
+					document.getElementById("alert").innerHTML = "Passwords do not match.";
+				}
+			}
+			
+		}
+	</script>
+</body> 
+</html>
